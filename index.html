@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zebomba Games</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript" src="js/Girl.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+</head>
+<body>
+    <div class="game">
+        <div class="map">
+            <div class="girl"></div>
+        </div>
+
+        <div class="menu">
+            <div class="friends">
+                <div class="btn arrow arrow-left"></div>
+                <div class="viewport">
+                    <div class="cell human plus"></div>
+                    <div class="cell human plus"></div>
+                    <div class="cell human plus"></div>
+                    <div class="cell human plus"></div>
+                    <div class="cell human"></div>
+                    <div class="cell human"></div>
+                    <div class="cell human"></div>
+                    <div class="cell human"></div>
+                    <div class="cell human"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="btn arrow arrow-right"></div>
+            </div>
+
+            <button type="button" class="btn chat"></button>
+            <button type="button" class="btn step" id="step"></button>
+            <button type="button" class="btn mail"></button>
+            <button type="button" class="btn leaderboard" id="leaderboard"></button>
+        </div>
+
+        <div class="leaderboardPopup">
+            <button type="button" class="btn close"></button>
+
+            <div class="tabs">
+                <button type="button" class="btn" id="week"></button>
+                <button type="button" class="btn" id="general"></button>
+            </div>
+
+            <!-- Week board -->
+            <div class="board active" id="weekBoard">
+                <div class="boardTitle"></div>
+            </div>
+
+            <!-- General board -->
+            <div class="board" id="generalBoard">
+                <div class="boardTitle"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const stepBtnNode = document.querySelector('#step');
+        const leaderboardBtnNode = document.querySelector('#leaderboard');
+        const girlNode = document.querySelector('.girl');
+
+        // Создали игрока
+        const girl = new Girl(girlNode);
+        // Инициализировали игру
+        const game = new Game(girl);
+
+        // Установили обработчик кнопки совершения хода
+        stepBtnNode.addEventListener('click', () => {
+            game.step();
+        });
+        // Установили обработчик кнопки Рейтинг
+        leaderboardBtnNode.addEventListener('click', () => {
+            game.leaderboard();
+        });
+    </script>
+</body>
+</html>
